@@ -1,0 +1,17 @@
+下面是实体类校验
+//如下，下面就可以直接使用 Spring el 表达式了
+@Value("I Love You!")
+//直接注入String类型
+@Value("#{systemProperties['os.name']}")
+//读取服务器系统版本
+@Value("#{ T(java.lang.Math).random()*100.0}")
+//注入数字类型数据
+@Value("#{demoServiceImpl.another}")
+//注入其他类里面的属性
+@Value("classpath:study/el/test.txt")
+//直接去读txt里面的内容 接收类型为  Resource 流形式
+@Value("http://www.baidu.com")
+//读取网站内容 接收类型为 Resource 类型
+@Value("${book.name}")
+//读取properties文件中的 book.name中的值 在读取前，需要在类上面加入如下标签 指定读取文件的位置
+@PropertySource("classpath:study/el/test.properties")
